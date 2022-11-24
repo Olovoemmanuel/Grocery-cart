@@ -1,0 +1,49 @@
+# write a program that takes in an item name, adds the name of the item to a group.
+# items can be milk, sugar, bread etc 
+# your program should allow a user to search for an item and display the item name and total quantity
+# your program should allow a user to see total items in the group e.g milk 2, sugar 3.
+
+items = []
+new_item = []
+def enter_item():
+    x = input('enter a product')
+    return x
+def add_item():
+    y = enter_item()
+    items.append(y)
+def display_item():
+    print(items)
+def add_another_item():
+    x = input('enter Y to add another or N to stop')
+    if x == 'Y':
+        add_item()
+        add_another_item()
+    elif x == "N":
+        display_item()
+    else:
+        print('invalid input')
+        add_another_item()
+add_item()
+add_another_item()
+
+def to_lower_case():
+    x = 0
+    while x < len(items):
+        y = items[x].lower()
+        new_item.append(y)
+        x = x+1
+to_lower_case()
+
+def search_item():
+    x = input('search for an item')
+    y = x.lower()
+    if y in new_item:
+        count_item = new_item.count(y)
+        total_item = len(new_item)
+        print(f'The item name is {y}')
+        print(f'The total number of item in the cart is: {total_item}')
+        print(f'You have {y} {count_item}')
+    else:
+        print('item not found')
+        search_item()
+search_item()
